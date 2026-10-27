@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12315a"><title>THAIKALI | ระบบจอง PM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">TK</span><span><strong>THAIKALI</strong><small>COMPANY LIMITED</small></span></a>
+      <div class="top-right"><span class="status-dot"></span><span>PM BOOKING PORTAL</span></div>
+    </header>
+    <main>
+      <section class="hero"><div><p class="eyebrow">IT SERVICE · MAINTENANCE</p><h1>ระบบจอง PM</h1><p class="hero-sub">ระบบจองแผนบำรุงรักษาคอมพิวเตอร์สำหรับพนักงาน</p></div><div class="hero-icon" aria-hidden="true">⌁</div></section>
+      <section class="stats" aria-label="สรุปข้อมูล"><article class="stat-card"><span class="stat-icon">▣</span><div><p>จำนวนเครื่องในแผนก</p><strong id="statCapacity">—</strong><small>เครื่อง</small></div></article><article class="stat-card"><span class="stat-icon amber">◷</span><div><p>วันที่เลือก</p><strong id="statDate">—</strong><small>วันที่เข้ารับบริการ</small></div></article><article class="stat-card"><span class="stat-icon green">✓</span><div><p>ขั้นตอนอนุมัติ</p><strong>2 ขั้นตอน</strong><small>หัวหน้าแผนกและผู้บริหาร</small></div></article></section>
+      <div id="notice" class="notice hidden" role="status"></div>
+      <div class="content-grid">
+        <section class="panel booking-panel"><div class="panel-heading"><div><span class="step">01</span><h2>สร้างคำขอจอง</h2></div><span class="required-note">* จำเป็นต้องระบุ</span></div>
+          <form id="bookingForm">
+            <label for="userSelect">ผู้จอง <b>*</b></label><select id="userSelect" required><option value="">กำลังโหลดรายชื่อพนักงาน…</option></select>
+            <div id="userSummary" class="user-summary hidden"><span class="avatar" id="avatar">TK</span><div><strong id="userName">—</strong><small id="userDepartment">—</small></div><span class="verified">จาก Users</span></div>
+            <div class="form-row"><div><label for="dateInput">วันที่จอง <b>*</b></label><input id="dateInput" type="date" required></div><div><label for="quantityInput">จำนวนเครื่อง <b>*</b></label><input id="quantityInput" type="number" min="1" value="1" required></div></div>
+            <label>ช่วงเวลาที่ต้องการ <b>*</b></label><div id="slotList" class="slot-list"></div>
+            <label for="noteInput">หมายเหตุเพิ่มเติม</label><textarea id="noteInput" rows="3" maxlength="500" placeholder="ระบุรายละเอียดเพิ่มเติม (ถ้ามี)"></textarea>
+            <div class="capacity-note"><span>ⓘ</span><p id="capacityText">เลือกชื่อพนักงานเพื่อดูจำนวนเครื่องที่สามารถจองได้</p></div>
+            <button id="submitButton" class="primary-button" type="submit"><span>ส่งคำขอจอง</span><span>→</span></button>
+            <p class="fine-print">คำขอจะส่งให้หัวหน้าแผนกตรวจสอบก่อนส่งต่อผู้บริหาร</p>
+          </form>
+        </section>
+        <aside class="panel side-panel"><div class="panel-heading"><div><span class="step">02</span><h2>ขั้นตอนการอนุมัติ</h2></div></div>
+          <div class="timeline"><div class="timeline-item"><span class="timeline-number">1</span><div><strong>หัวหน้าแผนก</strong><p>ตรวจสอบวันที่ ช่วงเวลา และจำนวนเครื่องที่ขอจอง</p><span class="pill pending">รอพิจารณา</span></div></div><div class="timeline-line"></div><div class="timeline-item"><span class="timeline-number">2</span><div><strong>ผู้บริหาร</strong><p>พิจารณาอนุมัติขั้นสุดท้าย</p><span class="pill review">ขั้นตอนถัดไป</span></div></div><div class="timeline-line"></div><div class="timeline-item"><span class="timeline-number final">✓</span><div><strong>ยืนยันการจอง</strong><p>ระบบบันทึกสถานะและแจ้งผลทางอีเมลตามข้อมูลที่มี</p></div></div></div>
+          <div class="help-card"><span class="help-icon">?</span><div><strong>ต้องการความช่วยเหลือ?</strong><p>ติดต่อแผนกไอที หากรายชื่อ แผนก หรือจำนวนเครื่องไม่ถูกต้อง</p></div></div>
+        </aside>
+      </div>
+      <section class="panel requests-panel"><div class="panel-heading"><div><span class="step">03</span><h2>รายการจองของแผนก</h2></div><button id="refreshButton" class="secondary-button" type="button">↻ รีเฟรช</button></div><div id="bookingList" class="booking-list"><div class="empty-state">เลือกชื่อพนักงานเพื่อดูรายการจอง</div></div></section>
+    </main>
+    <footer><span>© THAIKALI COMPANY LIMITED</span><span>PM BOOKING PORTAL <i>•</i> IT SERVICE</span></footer>
+  </div>
+  <script src="/app.js" defer></script>
+</body></html>
